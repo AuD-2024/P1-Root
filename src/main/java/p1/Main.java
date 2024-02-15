@@ -1,4 +1,4 @@
-package h01;
+package p1;
 
 /**
  * Main entry point in executing the program.

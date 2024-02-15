@@ -5,4 +5,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "P01-Root"
+rootProject.name = "P1-Root"
