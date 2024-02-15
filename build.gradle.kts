@@ -38,7 +38,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("h01.Main")
+    mainClass.set("p1.Main")
 }
 
 tasks {
