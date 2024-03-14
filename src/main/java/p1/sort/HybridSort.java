@@ -77,17 +77,15 @@ public class HybridSort<T> implements Sort<T> {
      */
     public void mergeSort(SortList<T> sortList, int left, int right) {
 
-        if (left >= right) {
-            return;
-        } else if (right - left + 1 < k) {
+        if (right - left + 1 < k) {
             bubbleSort(sortList, left, right);
-            return;
+        } else if (left < right) {
+            int middle = (left + right) / 2;
+            mergeSort(sortList, left, middle);
+            mergeSort(sortList, middle + 1, right);
+            merge(sortList, left, middle, right);
         }
 
-        int middle = (left + right) / 2;
-        mergeSort(sortList, left, middle);
-        mergeSort(sortList, middle + 1, right);
-        merge(sortList, left, middle, right);
     }
 
     /**
