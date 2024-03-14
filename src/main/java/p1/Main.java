@@ -48,7 +48,7 @@ public class Main {
 
     private static void radixSort() {
 
-        List<String> strings = List.of("FOP", "Mathe1", "DT", "AFE", "AUD", "Mathe2", "RO", "AUPL");
+        List<String> strings = List.of("FOP", "Mathe1", "DT", "AFE", "AUD", "Mathe2", "RO", "APL");
         SortList<String> list = new ArraySortList<>(strings);
 
         RadixSort<String> radixSort = new RadixSort<>(26, new LatinStringIndexExtractor());
