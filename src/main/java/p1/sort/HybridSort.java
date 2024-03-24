@@ -5,11 +5,11 @@ import p1.comparator.CountingComparator;
 import java.util.Comparator;
 
 /**
- * A hybrid sorting algorithm. It uses a combination of quickSort and insertionSort.
+ * A hybrid sorting algorithm. It uses a combination of mergeSort and bubbleSort.
  * <p>
- * quickSort is used for sorting the lists of size greater than or equal to k.
+ * mergeSort is used for sorting the lists of size greater than or equal to k.
  * <p>
- * insertionSort is used for sorting the lists of size less than k.
+ * bubbleSort is used for sorting the lists of size less than k.
  *
  * @param <T> the type of the elements to be sorted.
  *
@@ -18,7 +18,7 @@ import java.util.Comparator;
 public class HybridSort<T> implements Sort<T> {
 
     /**
-     * The threshold for switching from quickSort to insertionSort.
+     * The threshold for switching from mergeSort to bubbleSort.
      */
     private int k;
 
@@ -30,7 +30,7 @@ public class HybridSort<T> implements Sort<T> {
     /**
      * Creates a new {@link HybridSort} instance.
      *
-     * @param k          the threshold for switching from quickSort to insertionSort.
+     * @param k          the threshold for switching from mergeSort to bubbleSort.
      * @param comparator the comparator used for comparing the sorted elements.
      */
     public HybridSort(int k, Comparator<T> comparator) {
@@ -50,15 +50,15 @@ public class HybridSort<T> implements Sort<T> {
     }
 
     /**
-     * Returns the current threshold for switching from quickSort to insertionSort.
-     * @return the current threshold for switching from quickSort to insertionSort.
+     * Returns the current threshold for switching from mergeSort to bubbleSort.
+     * @return the current threshold for switching from mergeSort to bubbleSort.
      */
     public int getK() {
         return k;
     }
 
     /**
-     * Sets the threshold for switching from quickSort to insertionSort.
+     * Sets the threshold for switching from mergeSort to bubbleSort.
      * @param k the new threshold.
      */
     public void setK(int k) {

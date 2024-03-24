@@ -1,5 +1,5 @@
 {
-  "insertionTest": [
+  "bubbleSortTest": [
     {
       "values": [
         1,
@@ -116,7 +116,7 @@
       "left": 3,
       "right": 1,
       "k": 2,
-      "calls": false
+      "calls": true
     },
     {
       "values": [
@@ -129,7 +129,7 @@
       "left": 3,
       "right": 1,
       "k": 3,
-      "calls": false
+      "calls": true
     },
     {
       "values": [
@@ -142,7 +142,7 @@
       "left": 3,
       "right": 1,
       "k": 4,
-      "calls": false
+      "calls": true
     }
   ],
   "mergeSortTest": [

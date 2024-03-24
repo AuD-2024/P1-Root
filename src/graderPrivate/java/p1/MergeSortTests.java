@@ -50,8 +50,8 @@ public class MergeSortTests {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "insertionTest")
-    public void testInsertionCall(@Property("values") List<Integer> values,
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "bubbleSortTest")
+    public void testBubbleSort(@Property("values") List<Integer> values,
                                   @Property("left") Integer left,
                                   @Property("right") Integer right,
                                   @Property("k") Integer k,

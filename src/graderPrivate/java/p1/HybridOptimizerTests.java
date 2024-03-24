@@ -91,11 +91,11 @@ public class HybridOptimizerTests {
             return null;
         };
 
-        ArgumentCaptor<Integer> quickSortLeftCaptor = ArgumentCaptor.forClass(Integer.class);
-        ArgumentCaptor<Integer> quickSortRightCaptor = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Integer> mergeSortLeftCaptor = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Integer> mergeSortRightCaptor = ArgumentCaptor.forClass(Integer.class);
 
         doAnswer(answer).when(hybridSort).sort(any());
-        doAnswer(answer).when(hybridSort).mergeSort(any(), quickSortLeftCaptor.capture(), quickSortRightCaptor.capture());
+        doAnswer(answer).when(hybridSort).mergeSort(any(), mergeSortLeftCaptor.capture(), mergeSortRightCaptor.capture());
 
         //noinspection rawtypes
         try (MockedConstruction<ArraySortList> ignored = mockConstruction(ArraySortList.class, (mock, creationContext) -> {
@@ -122,14 +122,14 @@ public class HybridOptimizerTests {
         assertEquals(expectedCalls, calls.get(), context,
             result -> "the amount of calls to the sort method is not correct.");
 
-        for (Integer leftValue : quickSortLeftCaptor.getAllValues()) {
+        for (Integer leftValue : mergeSortLeftCaptor.getAllValues()) {
             assertEquals(0, leftValue, context,
-                result -> "the left value of the quickSort call is not correct.");
+                result -> "the left value of the mergeSort call is not correct.");
         }
 
-        for (Integer rightValue : quickSortRightCaptor.getAllValues()) {
+        for (Integer rightValue : mergeSortRightCaptor.getAllValues()) {
             assertEquals(values.size() - 1, rightValue, context,
-                result -> "the right value of the quickSort call is not correct.");
+                result -> "the right value of the mergeSort call is not correct.");
         }
 
     }
