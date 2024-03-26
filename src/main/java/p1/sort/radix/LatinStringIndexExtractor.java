@@ -6,9 +6,6 @@ package p1.sort.radix;
  * <p>It is case-insensitive. It maps the characters 'a' to 'z' to the indices 0 to 25. All other characters are mapped to 0.
  * The position is interpreted as the position from the end of the string, i.e. position 0 corresponds to the last
  * character in the string.
- *
- * <p>If a position is given that is greater than the length of the string, the first character is used as a padding
- * to not influence the sorting.
  */
 public class LatinStringIndexExtractor implements RadixIndexExtractor<String> {
 
