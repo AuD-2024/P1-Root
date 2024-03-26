@@ -56,7 +56,7 @@ public class RadixSort<T> implements Sort<T> {
         }
 
         if (radix < indexExtractor.getRadix()) {
-            throw new IllegalArgumentException("The radix of the keyExtractor may not be less than the given radix.");
+            throw new IllegalArgumentException("The given radix may not be less than the radix of the keyExtractor.");
         }
 
         for (int i = 0; i < radix; i++) {
