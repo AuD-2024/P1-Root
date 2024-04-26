@@ -19,16 +19,8 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertEquals;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertSame;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.contextBuilder;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.fail;
+import static org.mockito.Mockito.*;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
 @SuppressWarnings("DuplicatedCode")
 @TestForSubmission
@@ -51,10 +43,10 @@ public class MergeSortTests {
     @ParameterizedTest
     @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "bubbleSortCallTest")
     public void testBubbleSortCall(@Property("values") List<Integer> values,
-                                  @Property("left") Integer left,
-                                  @Property("right") Integer right,
-                                  @Property("k") Integer k,
-                                  @Property("calls") Boolean calls) {
+                                   @Property("left") Integer left,
+                                   @Property("right") Integer right,
+                                   @Property("k") Integer k,
+                                   @Property("calls") Boolean calls) {
 
         Context context = contextBuilder()
             .subject("HybridSort#mergeSort()")
@@ -101,11 +93,11 @@ public class MergeSortTests {
     @ParameterizedTest
     @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergeSortTest")
     public void testMergeSortRecursion(@Property("values") List<Integer> values,
-                              @Property("left") Integer left,
-                              @Property("right") Integer right,
-                              @Property("k") Integer k,
-                              @Property("calls") Boolean calls,
-                              @Property("middle") Integer middle) {
+                                       @Property("left") Integer left,
+                                       @Property("right") Integer right,
+                                       @Property("k") Integer k,
+                                       @Property("calls") Boolean calls,
+                                       @Property("middle") Integer middle) {
 
         Context context = contextBuilder()
             .subject("HybridSort#mergeSort()")
@@ -175,46 +167,46 @@ public class MergeSortTests {
 
     @ParameterizedTest
     @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "alreadyPartitionedTest")
-    public void testAlreadyPartitioned(@Property("values") List<Integer> values,
-                                       @Property("left") Integer left,
-                                       @Property("right") Integer right) {
+    public void testAlreadyMerged(@Property("values") List<Integer> values,
+                                  @Property("left") Integer left,
+                                  @Property("right") Integer right) {
 
-       checkMerging(values, left, right, left, values);
+        checkMerging(values, left, left, right, values);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "partitionTwoItemsTest")
-    public void testPartitionTwoItems(@Property("values") List<Integer> values,
-                                       @Property("left") Integer left,
-                                       @Property("right") Integer right,
-                                       @Property("expected") List<Integer> expected) {
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergingTwoItemsTest")
+    public void testMergingTwoItems(@Property("values") List<Integer> values,
+                                    @Property("left") Integer left,
+                                    @Property("right") Integer right,
+                                    @Property("expected") List<Integer> expected) {
 
-        checkMerging(values, left, right, left, expected);
+        checkMerging(values, left, left, right, expected);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "partitionThreeItemsTest")
-    public void testPartitionThreeItems(@Property("values") List<Integer> values,
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergingThreeItemsTest")
+    public void testMergingThreeItems(@Property("values") List<Integer> values,
                                       @Property("left") Integer left,
                                       @Property("right") Integer right,
                                       @Property("middle") Integer middle,
                                       @Property("expected") List<Integer> expected) {
 
-        checkMerging(values, left, right, middle, expected);
+        checkMerging(values, left, middle, right, expected);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "partitionMultipleItemsTest")
-    public void testPartitionMultipleItems(@Property("values") List<Integer> values,
-                                        @Property("left") Integer left,
-                                        @Property("right") Integer right,
-                                        @Property("middle") Integer middle,
-                                        @Property("expected") List<Integer> expected) {
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergingMultipleItemsTest")
+    public void testMergingMultipleItems(@Property("values") List<Integer> values,
+                                         @Property("left") Integer left,
+                                         @Property("right") Integer right,
+                                         @Property("middle") Integer middle,
+                                         @Property("expected") List<Integer> expected) {
 
-        checkMerging(values, left, right, middle, expected);
+        checkMerging(values, left, middle, right, expected);
     }
 
-    private void checkMerging(List<Integer> values, int left, int right, int middle, List<Integer> expected) {
+    private void checkMerging(List<Integer> values, int left, int middle, int right, List<Integer> expected) {
 
         SortList<Integer> sortList = new ArraySortList<>(values);
         hybridSort.merge(sortList, left, middle, right);

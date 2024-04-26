@@ -94,70 +94,72 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_2 = createParentCriterion("1 b)", "CountingComparator", H1_2_1, H1_2_2);
 
-    public static final Criterion H1_3_1 = createUntestedCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe bereits sortiert ist",
+    public static final Criterion H2_1_1 = createUntestedCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe bereits sortiert ist",
         () -> BubbleSortTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_3_2 = createUntestedCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe leer ist oder nur ein Element enthält",
+    public static final Criterion H2_1_2 = createUntestedCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe leer ist oder nur ein Element enthält",
         () -> BubbleSortTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_3_3 = createCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe zwei Elemente enthält", 1,
+    public static final Criterion H2_1_3 = createCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe zwei Elemente enthält", 1,
         () -> BubbleSortTest.class.getMethod("testTwoItems", List.class));
 
-    public static final Criterion H1_3_4 = createCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe mehr als zwei Elemente enthält", 1,
+    public static final Criterion H2_1_4 = createCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe mehr als zwei Elemente enthält", 1,
         () -> BubbleSortTest.class.getMethod("testMultipleItems", List.class));
 
-    public static final Criterion H1_3_5 = createUntestedCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort verändert nur Werte im Indexbereich [left, right]", null);
+    public static final Criterion H2_1_5 = createUntestedCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort verändert nur Werte im Indexbereich [left, right]", null);
 
-    public static final Criterion H1_3_6 = createCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort verwendet die korrekten Lese- und Schreiboperationen in der korrekten Reihenfolge.\nHinweis: Die public Tests testen dieses Kriterium nur für den Fall, dass [[[left = 0]]] und [[[right = array.length - 1]]].", 1,
+    public static final Criterion H2_1_6 = createCriterion("Die Methode [[[bubbleSort]]] der Klasse HybridSort verwendet die korrekten Lese- und Schreiboperationen in der korrekten Reihenfolge.\nHinweis: Die public Tests testen dieses Kriterium nur für den Fall, dass [[[left = 0]]] und [[[right = array.length - 1]]].", 1,
         () -> BubbleSortTest.class.getMethod("testOperationOrder", List.class, Integer.class, Integer.class, List.class));
 
-    public static final Criterion H1_3 = createParentCriterion("1 c)", "Insertionsort", H1_3_1, H1_3_2, H1_3_3, H1_3_4, H1_3_5, H1_3_6);
+    public static final Criterion H2_1 = createParentCriterion("2 a)", "BubbleSort", H2_1_1, H2_1_2, H2_1_3, H2_1_4, H2_1_5, H2_1_6);
 
-    public static final Criterion H1_4_1 = createCriterion("Die Methode [[[mergeSort]]] der Klasse HybridSort ruft, wenn notwendig, die Methode [[[bubbleSort]]] mit den korrekten Werten auf", 1,
+    public static final Criterion H2_2_1 = createCriterion("Die Methode [[[mergeSort]]] der Klasse HybridSort ruft, wenn notwendig, die Methode [[[bubbleSort]]] mit den korrekten Werten auf", 1,
         () -> MergeSortTests.class.getMethod("testBubbleSortCall", List.class, Integer.class, Integer.class, Integer.class, Boolean.class));
 
-    public static final Criterion H1_4_2 = createCriterion("Die Methode [[[mergeSort]]] der Klasse HybridSort ruft, wenn notwendig, die Methode [[[merge]]] und sich selber mit den korrekten Werten auf", 1,
+    public static final Criterion H2_2_2 = createCriterion("Die Methode [[[mergeSort]]] der Klasse HybridSort ruft, wenn notwendig, die Methode [[[merge]]] und sich selber mit den korrekten Werten auf", 1,
         () -> MergeSortTests.class.getMethod("testMergeSortRecursion", List.class, Integer.class, Integer.class, Integer.class, Boolean.class, Integer.class));
 
-    public static final Criterion H1_4_3 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe bereits gemerged ist", 1,
-        () -> MergeSortTests.class.getMethod("testAlreadyPartitioned", List.class, Integer.class, Integer.class));
+    public static final Criterion H2_2_3 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe bereits gemerged ist", 1,
+        () -> MergeSortTests.class.getMethod("testAlreadyMerged", List.class, Integer.class, Integer.class));
 
-    public static final Criterion H1_4_4 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe nicht gemerged ist und zwei Elemente enthält", 1,
-        () -> MergeSortTests.class.getMethod("testPartitionTwoItems", List.class, Integer.class, Integer.class, List.class));
+    public static final Criterion H2_2_4 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe nicht gemerged ist und zwei Elemente enthält", 1,
+        () -> MergeSortTests.class.getMethod("testMergingTwoItems", List.class, Integer.class, Integer.class, List.class));
 
-    public static final Criterion H1_4_5 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe nicht gemerged ist und drei Elemente enthält", 1,
-        () -> MergeSortTests.class.getMethod("testPartitionThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
+    public static final Criterion H2_2_5 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe nicht gemerged ist und drei Elemente enthält", 1,
+        () -> MergeSortTests.class.getMethod("testMergingThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
 
-    public static final Criterion H1_4_6 = createCriterion("Die Methode [[[partition]]] der Klasse HybridSort funktioniert vollständig korrekt", 1,
-        () -> MergeSortTests.class.getMethod("testAlreadyPartitioned", List.class, Integer.class, Integer.class),
-        () -> MergeSortTests.class.getMethod("testPartitionTwoItems", List.class, Integer.class, Integer.class, List.class),
-        () -> MergeSortTests.class.getMethod("testPartitionThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class),
-        () -> MergeSortTests.class.getMethod("testPartitionMultipleItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
+    public static final Criterion H2_2_6 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert vollständig korrekt", 1,
+        () -> MergeSortTests.class.getMethod("testAlreadyMerged", List.class, Integer.class, Integer.class),
+        () -> MergeSortTests.class.getMethod("testMergingTwoItems", List.class, Integer.class, Integer.class, List.class),
+        () -> MergeSortTests.class.getMethod("testMergingThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class),
+        () -> MergeSortTests.class.getMethod("testMergingMultipleItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
 
-    public static final Criterion H1_4 = createParentCriterion("1 d)", "Quicksort", H1_4_1, H1_4_2, H1_4_3, H1_4_4, H1_4_5, H1_4_6);
+    public static final Criterion H2_2 = createParentCriterion("2 b)", "MergeSort", H2_2_1, H2_2_2, H2_2_3, H2_2_4, H2_2_5, H2_2_6);
 
-    public static final Criterion H1_5_1 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer ruft die [[[sort]]] Methode mit korrekten Werten in der richtigen Reihenfolge auf",
+    public static final Criterion H2_3_1 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer ruft die [[[sort]]] Methode mit korrekten Werten in der richtigen Reihenfolge auf",
         () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_5_2 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es nur ein Minimum gibt",
+    public static final Criterion H2_3_2 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es nur ein Minimum gibt",
         () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_5_3 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte streng monoton fallend sind",
+    public static final Criterion H2_3_3 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte streng monoton fallend sind",
         () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_5_4 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte monoton fallend sind",
+    public static final Criterion H2_3_4 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte monoton fallend sind",
         () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_5_5 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es mehrere Minima gibt",
+    public static final Criterion H2_3_5 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es mehrere Minima gibt",
         () -> HybridOptimizerTest.class.getDeclaredMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_5 = createParentCriterion("1 e)", "HybridOptimizer", H1_5_1, H1_5_2, H1_5_3, H1_5_4, H1_5_5);
+    public static final Criterion H2_3 = createParentCriterion("2 c)", "HybridOptimizer", H2_3_1, H2_3_2, H2_3_3, H2_3_4, H2_3_5);
 
-    public static final Criterion H1 = createParentCriterion("1", "Sortieralgorithmen", H1_1, H1_2, H1_3, H1_4, H1_5);
+    public static final Criterion H1 = createParentCriterion("1", "Comparators", H1_1, H1_2);
+    public static final Criterion H2 = createParentCriterion("2", "Sortieralgorithmen", H2_1, H2_2, H2_3);
 
     public static final Rubric RUBRIC = Rubric.builder()
         .title("P1")
         .addChildCriteria(H1)
+        .addChildCriteria(H2)
         .build();
 
     @Override
