@@ -8,9 +8,9 @@ import p1.transformers.MethodInterceptor;
 @TestForSubmission
 public class HybridOptimizerTest {
 
-    public void checkIllegalMethods()  {
+    public void checkIllegalMethods() {
         MethodInterceptor.reset();
-        HybridOptimizer.optimize(new HybridSort<>(3, Integer::compare), new Integer[]{5,4,3,2,1});
+        HybridOptimizer.optimize(new HybridSort<>(3, Integer::compare), new Integer[]{5, 4, 3, 2, 1});
         IllegalMethodsCheck.checkMethods("^java/util/Arrays.+");
     }
 }

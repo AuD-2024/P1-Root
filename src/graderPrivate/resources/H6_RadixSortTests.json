@@ -1,0 +1,56 @@
+{
+  "twoItemsTest": [
+    {
+      "values": [
+        "abbb",
+        "aab"
+      ],
+      "expected": [
+        "aab",
+        "abbb"
+      ]
+    },
+    {
+      "values": [
+        "ca",
+        "ba"
+      ],
+      "expected": [
+        "ba",
+        "ca"
+      ]
+    }
+  ],
+  "multipleItemsTest": [
+    {
+      "values": [
+        "Compilerbau",
+        "Algorithmen",
+        "Logik",
+        "Digitaltechnik"
+      ],
+      "expected": [
+        "Algorithmen",
+        "Compilerbau",
+        "Digitaltechnik",
+        "Logik"
+      ]
+    },
+    {
+      "values": ["banana", "apple", "orange", "grape", "lemon", "mango"],
+      "expected": ["apple", "banana", "grape", "lemon", "mango", "orange"]
+    },
+    {
+      "values": ["river", "mountain", "ocean", "forest", "desert", "lake"],
+      "expected": ["desert", "forest", "lake", "mountain", "ocean", "river"]
+    },
+    {
+      "values": ["math", "biology", "chemistry", "physics", "history", "geography"],
+      "expected": ["biology", "chemistry", "geography", "history", "math", "physics"]
+    },
+    {
+      "values": ["table", "chair", "sofa", "bed", "cabinet", "desk"],
+      "expected": ["bed", "cabinet", "chair", "desk", "sofa", "table"]
+    }
+  ]
+}
