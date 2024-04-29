@@ -78,18 +78,15 @@ public class P1_RubricProvider implements RubricProvider {
             .build();
     }
 
-    public static final Criterion H1_1_1 = createUntestedCriterion("Die Methode [[[compare]]] der Klasse CardComparator funktioniert korrekt wenn die Farben der verglichenen Karten unterschiedlichen unterschiedlich sind",
+    public static final Criterion H1_1_1 = createUntestedCriterion("Die Methode [[[compare]]] der Klasse CardComparator funktioniert vollständig korrekt.",
         () -> CardComparatorTests.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_1_2 = createUntestedCriterion("Die Methode [[[compare]]] der Klasse CardComparator funktioniert korrekt wenn die Farben der verglichenen Karten gleich sind",
-        () -> CardComparatorTests.class.getMethod("checkIllegalMethods"));
-
-    public static final Criterion H1_1 = createParentCriterion("1 a)", "CardComparator", H1_1_1, H1_1_2);
+    public static final Criterion H1_1 = createParentCriterion("1 a)", "CardComparator", H1_1_1);
 
     public static final Criterion H1_2_1 = createUntestedCriterion("Die Methode [[[compare]]] der Klasse CountingComparator funktioniert korrekt",
         () -> CountingComparatorTest.class.getMethod("checkIllegalMethods"));
 
-    public static final Criterion H1_2_2 = createUntestedCriterion("Die Methoden [[[reset]]] und getComparisonsCount der Klasse CountingComparator funktionieren korrekt",
+    public static final Criterion H1_2_2 = createUntestedCriterion("Die Methoden [[[reset]]] und [[[getComparisonsCount]]] der Klasse CountingComparator funktionieren vollständig korrekt",
         () -> CountingComparatorTest.class.getMethod("checkIllegalMethods"));
 
     public static final Criterion H1_2 = createParentCriterion("1 b)", "CountingComparator", H1_2_1, H1_2_2);
@@ -153,25 +150,43 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_3 = createParentCriterion("2 c)", "HybridOptimizer", H2_3_1, H2_3_2, H2_3_3, H2_3_4, H2_3_5);
 
-    public static final Criterion H3_1_1 = createUntestedCriterion("Die Methoden [[[getRadix]]] und [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktionieren korrekt",
+    public static final Criterion H3_1_1 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen ein gültiger Buchstabe ist",
         () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
 
-    public static final Criterion H3_1 = createParentCriterion("3 a)", "LatinStringIndexExtractor", H3_1_1);
+    public static final Criterion H3_1_2 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen kein gültiger Buchstabe ist",
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
 
-    public static final Criterion H3_2_1 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert vollständig korrekt", 1,
-        () -> BubbleSortTest.class.getMethod("checkIllegalMethods"));
+    public static final Criterion H3_1_3 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position außerhalb des Indexbereiches des String liegt",
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
 
-    public static final Criterion H3_2_3 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert korrekt wenn die Eingabe zwei Elemente enthält", 1,
-        () -> BubbleSortTest.class.getMethod("testTwoItems", List.class));
+    public static final Criterion H3_1 = createParentCriterion("3 a)", "LatinStringIndexExtractor", H3_1_1, H3_1_2, H3_1_3);
 
-    public static final Criterion H3_2_4 = createCriterion("Die Methode [[[maxInputLength]]] der Klasse RadixSort funktioniert korrekt mit mehreren Elementen", 1,
-        () -> BubbleSortTest.class.getMethod("testMultipleItems", List.class));
+    public static final Criterion H3_2_1 = createUntestedCriterion("Die Methode [[[putBucket]]] der Klasse RadixSort funktioniert vollständig korrekt",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
 
-    public static final Criterion H3_2 = createParentCriterion("3 b)", "RadixSort", H3_2_1, H3_2_3, H3_2_4);
+    public static final Criterion H3_2_2= createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength 1 ist",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_3 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength größer als 1 ist",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_4 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit einem Eintrag gibt und maxInputLength 1 ist",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_5 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit mehreren Einträgen gibt und maxInputLength 1 ist",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_6 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_7 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert vollständig korrekt",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2 = createParentCriterion("3 b)", "RadixSort", H3_2_1, H3_2_2, H3_2_3, H3_2_4, H3_2_5, H3_2_6, H3_2_7);
 
     public static final Criterion H1 = createParentCriterion("1", "Comparators", H1_1, H1_2);
-    public static final Criterion H2 = createParentCriterion("2", "Sortieralgorithmen", H2_1, H2_2, H2_3);
-    public static final Criterion H3 = createParentCriterion("3", "RadixSort", H3_1, H3_2);
+    public static final Criterion H2 = createParentCriterion("2", "Hybrid-Sort", H2_1, H2_2, H2_3);
+    public static final Criterion H3 = createParentCriterion("3", "Radix-Sort", H3_1, H3_2);
 
     public static final Rubric RUBRIC = Rubric.builder()
         .title("P1")

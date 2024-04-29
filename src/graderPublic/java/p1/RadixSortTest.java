@@ -2,6 +2,7 @@ package p1;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junitpioneer.jupiter.json.JsonClasspathSource;
 import org.junitpioneer.jupiter.json.Property;
@@ -10,7 +11,6 @@ import org.tudalgo.algoutils.tutor.general.assertions.Context;
 import p1.sort.ArraySortList;
 import p1.sort.SortList;
 import p1.sort.radix.IntegerIndexExtractor;
-import p1.sort.radix.LatinStringIndexExtractor;
 import p1.sort.radix.RadixSort;
 import p1.transformers.MethodInterceptor;
 
@@ -18,8 +18,9 @@ import java.util.List;
 import java.util.Objects;
 
 import static org.mockito.Mockito.spy;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertTrue;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.call;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.contextBuilder;
 
 @SuppressWarnings("DuplicatedCode")
 @TestForSubmission
@@ -35,6 +36,13 @@ public class RadixSortTest {
 
     @AfterEach
     public void checkIllegalMethods() {
+        IllegalMethodsCheck.checkMethods();
+    }
+
+    @Test
+    public void checkIllegalMethodsUntested() {
+        MethodInterceptor.reset();
+        radixSort.sort(new ArraySortList<>(List.of(5, 4, 3, 2, 1)));
         IllegalMethodsCheck.checkMethods();
     }
 

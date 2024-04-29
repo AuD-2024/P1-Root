@@ -7,8 +7,6 @@ import p1.sort.SortList;
 import p1.sort.radix.LatinStringIndexExtractor;
 import p1.sort.radix.RadixSort;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
