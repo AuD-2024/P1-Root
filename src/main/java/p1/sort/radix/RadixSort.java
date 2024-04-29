@@ -3,6 +3,8 @@ package p1.sort.radix;
 import p1.sort.Sort;
 import p1.sort.SortList;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * An implementation of the radix sort algorithm.
  *
@@ -66,20 +68,7 @@ public class RadixSort<T> implements Sort<T> {
 
     @Override
     public void sort(SortList<T> sortList) {
-
-        for (int i = 0; i < maxInputLength; i++) {
-            for (int j = 0; j < sortList.getSize(); j++) {
-                putBucket(sortList.get(j), i);
-            }
-
-            int index = 0;
-            for (Bucket<T> bucket : buckets) {
-                while (!bucket.isEmpty()) {
-                    sortList.set(index++, bucket.remove());
-                }
-            }
-        }
-
+        crash(); //TODO: H3  b) - remove if implemented
     }
 
     /**
@@ -92,8 +81,7 @@ public class RadixSort<T> implements Sort<T> {
      * @see RadixIndexExtractor#extractIndex(T, int)
      */
     public void putBucket(T value, int position) {
-        int index = indexExtractor.extractIndex(value, position);
-        buckets[index].add(value);
+        crash(); //TODO: H3  b) - remove if implemented
     }
 
     @Override

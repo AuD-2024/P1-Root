@@ -24,10 +24,6 @@ jagr {
                 implementation(libs.algoutils.tutor)
             }
         }
-        val graderPrivate by creating {
-            parent(graderPublic)
-            graderName.set("P1-Private")
-        }
     }
 }
 

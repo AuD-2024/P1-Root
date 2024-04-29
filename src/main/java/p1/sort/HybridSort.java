@@ -4,6 +4,8 @@ import p1.comparator.CountingComparator;
 
 import java.util.Comparator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * A hybrid sorting algorithm. It uses a combination of mergeSort and bubbleSort.
  * <p>
@@ -76,16 +78,7 @@ public class HybridSort<T> implements Sort<T> {
      * @param right The rightmost index of the list to be sorted. (inclusive)
      */
     public void mergeSort(SortList<T> sortList, int left, int right) {
-
-        if (right - left + 1 < k) {
-            bubbleSort(sortList, left, right);
-        } else if (left < right) {
-            int middle = (left + right) / 2;
-            mergeSort(sortList, left, middle);
-            mergeSort(sortList, middle + 1, right);
-            merge(sortList, left, middle, right);
-        }
-
+        crash(); //TODO: H2 b) - remove if implemented
     }
 
     /**
@@ -107,27 +100,7 @@ public class HybridSort<T> implements Sort<T> {
      * @param right The rightmost index of the two sublists to be merged. (inclusive)
      */
     public void merge(SortList<T> sortList, int left, int middle, int right) {
-
-        int size = right - left + 1;
-        SortList<T> tmp = new ArraySortList<>(size);
-
-        int pl = left;
-        int pr = middle + 1;
-
-        for (int i = 0; i < size; i++) {
-
-            if (pr > right || (pl <= middle && comparator.compare(sortList.get(pl), sortList.get(pr)) <= 0)) {
-                tmp.set(i, sortList.get(pl));
-                pl++;
-            } else {
-                tmp.set(i, sortList.get(pr));
-                pr++;
-            }
-        }
-
-        for (int i = 0; i < size; i++) {
-            sortList.set(left + i, tmp.get(i));
-        }
+        crash(); //TODO: H2 b) - remove if implemented
     }
 
     /**
@@ -141,15 +114,7 @@ public class HybridSort<T> implements Sort<T> {
      */
     public void bubbleSort(SortList<T> sortList, int left, int right) {
 
-        for (int i = right; i > left; i--) {
-            for (int j = left; j < i; j++) {
-                if (comparator.compare(sortList.get(j), sortList.get(j + 1)) > 0) {
-                    T temp = sortList.get(j + 1);
-                    sortList.set(j + 1, sortList.get(j));
-                    sortList.set(j, temp);
-                }
-            }
-        }
+        crash(); //TODO: H2 a) - remove if implemented
     }
 
 }

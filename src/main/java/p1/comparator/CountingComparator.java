@@ -2,6 +2,8 @@ package p1.comparator;
 
 import java.util.Comparator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * An {@link Comparator} that stores the number of comparisons made by the {@link #compare(Object, Object)} method.
  * <p>
@@ -19,12 +21,6 @@ public class CountingComparator<T> implements Comparator<T> {
     private final Comparator<T> delegate;
 
     /**
-     * The number of comparisons made by the {@link #compare(Object, Object)} method since the last time {@link #reset()} got called
-     * or the creation of this object if the {@link #reset()} method did not get called yet.
-     */
-    private int comparisons;
-
-    /**
      * Creates a new {@link CountingComparator} that delegates the actual comparison to the given {@link Comparator}.
      * @param delegate the {@link Comparator} that performs the actual comparison.
      */
@@ -36,7 +32,7 @@ public class CountingComparator<T> implements Comparator<T> {
      * Resets the number of comparisons made by the {@link #compare(Object, Object)} method to 0.
      */
     public void reset() {
-        comparisons = 0;
+        crash(); //TODO: H1 b) - remove if implemented
     }
 
     /**
@@ -50,8 +46,7 @@ public class CountingComparator<T> implements Comparator<T> {
      */
     @Override
     public int compare(T o1, T o2) {
-        comparisons++;
-        return delegate.compare(o1, o2);
+        return crash(); //TODO: H1 b) - remove if implemented
     }
 
     /**
@@ -63,6 +58,6 @@ public class CountingComparator<T> implements Comparator<T> {
      * @return the number of comparisons made.
      */
     public int getComparisonsCount() {
-        return comparisons;
+        return crash(); //TODO: H1 b) - remove if implemented
     }
 }

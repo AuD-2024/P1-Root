@@ -1,5 +1,7 @@
 package p1.sort.radix;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * An {@link RadixIndexExtractor} for extracting the index corresponding to a character in a string.
  *
@@ -11,22 +13,7 @@ public class LatinStringIndexExtractor implements RadixIndexExtractor<String> {
 
     @Override
     public int extractIndex(String value, int position) {
-
-        if (position < 0) {
-            throw new IndexOutOfBoundsException("The position must be greater than or equal to 0.");
-        }
-
-        if (position > value.length() - 1) {
-            position = value.length() - 1;
-        }
-
-        char c = Character.toLowerCase(value.charAt(value.length() - position - 1));
-
-        if (c < 'a' || c > 'z') {
-            return 0;
-        }
-
-        return c - 'a';
+        return crash(); //TODO: H3  a) - remove if implemented
     }
 
     @Override

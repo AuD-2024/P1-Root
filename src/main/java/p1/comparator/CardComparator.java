@@ -5,6 +5,8 @@ import p1.card.CardColor;
 
 import java.util.Comparator;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Compares two {@linkplain Card Cards}.
  * <p>
@@ -14,8 +16,6 @@ import java.util.Comparator;
  * @see CardColor
  */
 public class CardComparator implements Comparator<Card> {
-
-    private static final Comparator<Card> COMPARATOR = Comparator.comparingInt(Card::cardValue).thenComparing(Card::cardColor);
 
     /**
      * Compares two {@linkplain Card Cards}.
@@ -37,6 +37,6 @@ public class CardComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card o1, Card o2) {
-        return COMPARATOR.compare(o1, o2);
+        return crash(); //TODO: H1 a) - remove if implemented
     }
 }

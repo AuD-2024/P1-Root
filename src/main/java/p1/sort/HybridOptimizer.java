@@ -1,5 +1,7 @@
 package p1.sort;
 
+import static org.tudalgo.algoutils.student.Student.crash;
+
 /**
  * Optimizes the {@link HybridSort} by trying to find the k-value with the lowest number of read and write operations..
  */
@@ -16,30 +18,7 @@ public class HybridOptimizer {
      * @param <T> the type of the elements to be sorted.
      */
     public static <T> int optimize(HybridSort<T> hybridSort, T[] array) {
-        int readAndWrites = Integer.MAX_VALUE;
-
-        for (int k = 0; k <= array.length + 1; k++) {
-            SortList<T> sortList = new ArraySortList<>(array);
-
-            hybridSort.setK(k);
-            hybridSort.sort(sortList);
-
-            int newReadAndWrites = sortList.getReadCount() + sortList.getWriteCount();
-
-            System.out.println("k: " + k +
-                ", readCount: " + sortList.getReadCount() +
-                ", writeCount: " + sortList.getWriteCount() +
-                ", readAndWrites: " + newReadAndWrites +
-                ", comparisons: " + hybridSort.getComparisonsCount());
-
-            if (newReadAndWrites <= readAndWrites) {
-                readAndWrites = newReadAndWrites;
-            } else {
-               return k - 1;
-            }
-        }
-
-        return array.length + 1;
+        return crash(); //TODO: H2 c) - remove if implemented
     }
 
 }
