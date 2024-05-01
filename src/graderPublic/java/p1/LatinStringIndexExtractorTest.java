@@ -38,4 +38,14 @@ public class LatinStringIndexExtractorTest {
         assertEquals(13, new LatinStringIndexExtractor().extractIndex("testen", 0),
             context, result -> "Correct index from the end of string is extracted");
     }
+
+    @Test
+    public void testExtractInvalidChar() {
+        Context context = contextBuilder()
+            .subject("LatinStringIndexExtractor.extractIndex")
+            .build();
+
+        assertEquals(0, new LatinStringIndexExtractor().extractIndex("testen!", 0),
+            context, result -> "Correct index with invalid char is extracted");
+    }
 }

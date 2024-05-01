@@ -1,13 +1,17 @@
 {
-  "twoItemsTest": [
+  "putBucketTest": [
     {
       "values": [
         12,
         42
       ],
       "expected": [
-        12,
+        42,
         42
+      ],
+      "position": [
+        0,
+        0
       ]
     },
     {
@@ -17,9 +21,14 @@
         66
       ],
       "expected": [
-        "33",
         "66",
-        "99"
+        "66",
+        "66"
+      ],
+      "position": [
+        0,
+        0,
+        0
       ]
     }
   ],
