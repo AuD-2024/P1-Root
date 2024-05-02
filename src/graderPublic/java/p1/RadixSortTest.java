@@ -45,14 +45,14 @@ public class RadixSortTest {
 
     @ParameterizedTest
     @JsonClasspathSource(value = "H5_RadixSortTests.json", data = "multipleItemsTest")
-    public void testOneBucketSort(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected) {
-        testSorting(values, expected, 10);
+    public void testOneBucketSort(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected, @Property("position") List<Integer> position) {
+        testSorting(values, expected, position, 1);
     }
 
     @ParameterizedTest
     @JsonClasspathSource(value = "H5_RadixSortTests.json", data = "putBucketTest")
     public void testPutBucketCallSingle(@Property("values") List<Integer> values, @Property("position") List<Integer> position, @Property("expected") List<Integer> expected) {
-        RadixSort<Integer> radixSort = spy(new RadixSort<>(1, new IntegerIndexExtractor(1)));
+        RadixSort<Integer> radixSort = spy(new RadixSort<>(10, new IntegerIndexExtractor(10)));
         radixSort.setMaxInputLength(1);
 
         SortList<Integer> sortList = new ArraySortList<>(values);
@@ -75,24 +75,20 @@ public class RadixSortTest {
 
         radixSort.sort(sortList);
 
+        List<Integer> capturedValues = valueCaptor.getAllValues();
+        List<Integer> capturedPositions = positionCaptor.getAllValues();
         for (int i = 0; i < values.toArray().length; i++) {
             int finalI = i;
-            assertEquals(expected.get(i), valueCaptor.getValue(), context, result -> "putBucket() was called with the wrong value at index %d.".formatted(finalI));
-            assertEquals(position.get(i), positionCaptor.getValue(), context, result -> "putBucket() was called with the wrong position value at index %d.".formatted(finalI));
+            assertEquals(expected.get(i), capturedValues.get(i), context, result -> "putBucket() was called with the wrong value at index %d.".formatted(finalI));
+            assertEquals(position.get(i), capturedPositions.get(i), context, result -> "putBucket() was called with the wrong position value at index %d.".formatted(finalI));
         }
     }
 
 
-    private void testSorting(List<Integer> values, List<Integer> expected, Integer maxInputLength) {
-        RadixSort<Integer> radixSort = new RadixSort<>(10, new IntegerIndexExtractor(10));
+    private void testSorting(List<Integer> values, List<Integer> expected, List<Integer> position, Integer maxInputLength) {
+        RadixSort<Integer> radixSort = new RadixSort<>(1000, new IntegerIndexExtractor(1000));
         radixSort.setMaxInputLength(maxInputLength);
-
         SortList<Integer> sortList = new ArraySortList<>(values);
-        call(() -> radixSort.sort(sortList), contextBuilder()
-                .subject("RadixSort#sort()")
-                .add("values", values)
-                .build(),
-            result -> "sort() should not throw an exception.");
 
         Context context = contextBuilder()
             .subject("RadixSort#sort()")
@@ -100,6 +96,13 @@ public class RadixSortTest {
             .add("actual", sortList)
             .add("expected", expected)
             .build();
+
+        call(() -> radixSort.sort(sortList), contextBuilder()
+                .subject("RadixSort#sort()")
+                .add("values", values)
+                .build(),
+            result -> "sort() should not throw an exception.");
+
 
         assertTrue(isSorted(sortList, expected), context,
             result -> "The sortList should be sorted after calling sort().");

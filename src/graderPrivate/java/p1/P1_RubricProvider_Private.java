@@ -123,10 +123,36 @@ public class P1_RubricProvider_Private implements RubricProvider {
     public static final Criterion H2_3_5 = createCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es mehrere Minima gibt", 1,
         () -> HybridOptimizerTests.class.getMethod("testGlobalNotLocal", List.class, List.class, List.class, int.class));
 
+    public static final Criterion H3_1_3 = createCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position außerhalb des Indexbereiches des String liegt", 1,
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testValuesOutOfValueRange"));
+
+    public static final Criterion H3_1_4 = createCriterion("Die Methode [[[getRadix]]] der Klasse LatinStringIndexExtractor funktioniert vollständig korrekt", 1,
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("getRadixTest"));
+
+    public static final Criterion H3_1 = createParentCriterion("3 a)", "LatinStringIndexExtractor", H3_1_3);
+
+    public static final Criterion H3_2_1 = createCriterion("Die Methode [[[putBucket]]] der Klasse RadixSort funktioniert vollständig korrekt", 1,
+        () -> RadixSortTest.class.getMethod(""));
+
+    public static final Criterion H3_2_4 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit einem Eintrag gibt und maxInputLength 1 ist", 1,
+        () -> RadixSortTests.class.getMethod("oneBucketEntryMaxLength1"));
+
+    public static final Criterion H3_2_5 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit mehreren Einträgen gibt und maxInputLength 1 ist", 1,
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_6 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist", 1,
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2_7 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert vollständig korrekt", 1,
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+
+    public static final Criterion H3_2 = createParentCriterion("3 b)", "RadixSort", H3_2_1, H3_2_4, H3_2_5, H3_2_6, H3_2_7);
+
     public static final Criterion H2_3 = createParentCriterion("2 c)", "HybridOptimizer", H2_3_1, H2_3_2, H2_3_3, H2_3_4, H2_3_5);
 
     public static final Criterion H1 = createParentCriterion("1", "Comparators", H1_1, H1_2, H2_1, H2_2, H2_3);
     public static final Criterion H2 = createParentCriterion("2", "Sortieralgorithmen", H1_1, H1_2, H2_1, H2_2, H2_3);
+    public static final Criterion H3 = createParentCriterion("3", "Radix-Sort", H3_1, H3_2);
 
     public static final Rubric RUBRIC = Rubric.builder()
         .title("P1")

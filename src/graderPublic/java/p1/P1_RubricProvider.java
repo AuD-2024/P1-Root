@@ -164,11 +164,11 @@ public class P1_RubricProvider implements RubricProvider {
     public static final Criterion H3_2_1 = createUntestedCriterion("Die Methode [[[putBucket]]] der Klasse RadixSort funktioniert vollständig korrekt",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
 
-    public static final Criterion H3_2_2= createCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength 1 ist", 1,
+    public static final Criterion H3_2_2 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength 1 ist", 1,
         () -> RadixSortTest.class.getMethod("testPutBucketCallSingle", List.class, List.class, List.class));
 
-    public static final Criterion H3_2_3 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength größer als 1 ist", 1,
-        () -> RadixSortTest.class.getMethod("testOneBucketSort", List.class, List.class));
+    public static final Criterion H3_2_3 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength größer als 1 ist",
+        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
 
     public static final Criterion H3_2_4 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit einem Eintrag gibt und maxInputLength 1 ist",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
@@ -176,8 +176,8 @@ public class P1_RubricProvider implements RubricProvider {
     public static final Criterion H3_2_5 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit mehreren Einträgen gibt und maxInputLength 1 ist",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
 
-    public static final Criterion H3_2_6 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist",
-        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+    public static final Criterion H3_2_6 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist", 1,
+        () -> RadixSortTest.class.getMethod("testOneBucketSort", List.class, List.class, List.class));
 
     public static final Criterion H3_2_7 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert vollständig korrekt",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
