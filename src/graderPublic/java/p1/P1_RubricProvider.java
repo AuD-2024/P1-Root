@@ -83,8 +83,8 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H1_1 = createParentCriterion("1 a)", "CardComparator", H1_1_1);
 
-    public static final Criterion H1_2_1 = createUntestedCriterion("Die Methode [[[compare]]] der Klasse CountingComparator funktioniert korrekt",
-        () -> CountingComparatorTest.class.getMethod("checkIllegalMethods"));
+    public static final Criterion H1_2_1 = createCriterion("Die Methode [[[compare]]] der Klasse CountingComparator funktioniert korrekt", 1,
+        () -> CountingComparatorTest.class.getMethod("testSortingOrder"));
 
     public static final Criterion H1_2_2 = createUntestedCriterion("Die Methoden [[[reset]]] und [[[getComparisonsCount]]] der Klasse CountingComparator funktionieren vollständig korrekt",
         () -> CountingComparatorTest.class.getMethod("checkIllegalMethods"));
@@ -150,11 +150,11 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_3 = createParentCriterion("2 c)", "HybridOptimizer", H2_3_1, H2_3_2, H2_3_3, H2_3_4, H2_3_5);
 
-    public static final Criterion H3_1_1 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen ein gültiger Buchstabe ist",
-        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
+    public static final Criterion H3_1_1 = createCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen ein gültiger Buchstabe ist", 1,
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testExtractIndexValid"));
 
-    public static final Criterion H3_1_2 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen kein gültiger Buchstabe ist",
-        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
+    public static final Criterion H3_1_2 = createCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen kein gültiger Buchstabe ist", 1,
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testExtractInvalidChar"));
 
     public static final Criterion H3_1_3 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position außerhalb des Indexbereiches des String liegt",
         () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
@@ -164,8 +164,8 @@ public class P1_RubricProvider implements RubricProvider {
     public static final Criterion H3_2_1 = createUntestedCriterion("Die Methode [[[putBucket]]] der Klasse RadixSort funktioniert vollständig korrekt",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
 
-    public static final Criterion H3_2_2= createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength 1 ist",
-        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+    public static final Criterion H3_2_2 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength 1 ist", 1,
+        () -> RadixSortTest.class.getMethod("testPutBucketCallSingle", List.class, List.class, List.class));
 
     public static final Criterion H3_2_3 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength größer als 1 ist",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
@@ -176,8 +176,8 @@ public class P1_RubricProvider implements RubricProvider {
     public static final Criterion H3_2_5 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit mehreren Einträgen gibt und maxInputLength 1 ist",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
 
-    public static final Criterion H3_2_6 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist",
-        () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
+    public static final Criterion H3_2_6 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist", 1,
+        () -> RadixSortTest.class.getMethod("testOneBucketSort", List.class, List.class, List.class));
 
     public static final Criterion H3_2_7 = createUntestedCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert vollständig korrekt",
         () -> RadixSortTest.class.getMethod("checkIllegalMethodsUntested"));
