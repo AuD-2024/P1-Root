@@ -79,15 +79,15 @@ public class P1_RubricProvider implements RubricProvider {
     }
 
     public static final Criterion H1_1_1 = createUntestedCriterion("Die Methode [[[compare]]] der Klasse CardComparator funktioniert vollständig korrekt.",
-        () -> CardComparatorTests.class.getMethod("checkIllegalMethods"));
+        () -> CardComparatorTest.class.getMethod("checkIllegalMethods"));
 
     public static final Criterion H1_1 = createParentCriterion("1 a)", "CardComparator", H1_1_1);
 
     public static final Criterion H1_2_1 = createCriterion("Die Methode [[[compare]]] der Klasse CountingComparator funktioniert korrekt", 1,
-        () -> CountingComparatorTest.class.getMethod("testSortingOrder"));
+        () -> CountingComparatorTest.class.getMethod("testCompare", Integer.class, Integer.class));
 
     public static final Criterion H1_2_2 = createUntestedCriterion("Die Methoden [[[reset]]] und [[[getComparisonsCount]]] der Klasse CountingComparator funktionieren vollständig korrekt",
-        () -> CountingComparatorTest.class.getMethod("checkIllegalMethods"));
+        () -> CountingComparatorTest.class.getMethod("checkIllegalMethodsUntested"));
 
     public static final Criterion H1_2 = createParentCriterion("1 b)", "CountingComparator", H1_2_1, H1_2_2);
 
@@ -133,8 +133,8 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_2 = createParentCriterion("2 b)", "MergeSort", H2_2_1, H2_2_2, H2_2_3, H2_2_4, H2_2_5, H2_2_6);
 
-    public static final Criterion H2_3_1 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer ruft die [[[sort]]] Methode mit korrekten Werten in der richtigen Reihenfolge auf",
-        () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
+    public static final Criterion H2_3_1 = createCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer ruft die [[[sort]]] Methode mit korrekten Werten in der richtigen Reihenfolge auf", 1,
+        () -> HybridOptimizerTest.class.getMethod("testSortCall", List.class, List.class, List.class, int.class));
 
     public static final Criterion H2_3_2 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es nur ein Minimum gibt",
         () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
@@ -151,10 +151,10 @@ public class P1_RubricProvider implements RubricProvider {
     public static final Criterion H2_3 = createParentCriterion("2 c)", "HybridOptimizer", H2_3_1, H2_3_2, H2_3_3, H2_3_4, H2_3_5);
 
     public static final Criterion H3_1_1 = createCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen ein gültiger Buchstabe ist", 1,
-        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testExtractIndexValid"));
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testExtractValidIndex", String.class, int.class, int.class));
 
     public static final Criterion H3_1_2 = createCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position innerhalb des Indexbereiches des String liegt und das Zeichen kein gültiger Buchstabe ist", 1,
-        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testExtractInvalidChar"));
+        () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("testExtractInvalidChar", String.class, int.class));
 
     public static final Criterion H3_1_3 = createUntestedCriterion("Die Methode [[[extractIndex]]] der Klasse LatinStringIndexExtractor funktioniert korrekt wenn die Position außerhalb des Indexbereiches des String liegt",
         () -> LatinStringIndexExtractorTest.class.getDeclaredMethod("checkIllegalMethods"));
