@@ -21,8 +21,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.*;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mockConstruction;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertEquals;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.contextBuilder;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.fail;
 
 @TestForSubmission
 public class HybridOptimizerTest {
@@ -39,8 +44,9 @@ public class HybridOptimizerTest {
         IllegalMethodsCheck.checkMethods("^java/util/Arrays.+");
     }
 
+    @SuppressWarnings("unchecked")
     @ParameterizedTest
-    @JsonClasspathSource(value = "H2_OptimizerTest.json", data = "sortCallTest")
+    @JsonClasspathSource(value = "H5_HybridOptimizerTests.json", data = "sortCallTest")
     public void testSortCall(@Property("values") List<Integer> values,
                              @Property("reads") List<Integer> reads,
                              @Property("writes") List<Integer> writes,

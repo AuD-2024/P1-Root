@@ -19,8 +19,13 @@ import java.util.List;
 import java.util.Objects;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
+import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.spy;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertEquals;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertTrue;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.call;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.contextBuilder;
 
 @SuppressWarnings("DuplicatedCode")
 @TestForSubmission
@@ -44,13 +49,13 @@ public class RadixSortTest {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H5_RadixSortTests.json", data = "multipleItemsTest")
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "multipleItemsTest")
     public void testOneBucketSort(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected, @Property("position") List<Integer> position) {
         testSorting(values, expected, position, 1);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H5_RadixSortTests.json", data = "putBucketTest")
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "putBucketTest")
     public void testPutBucketCallSingle(@Property("values") List<Integer> values, @Property("position") List<Integer> position, @Property("expected") List<Integer> expected) {
         RadixSort<Integer> radixSort = spy(new RadixSort<>(10, new IntegerIndexExtractor(10)));
         radixSort.setMaxInputLength(1);
