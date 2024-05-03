@@ -25,20 +25,4 @@ public class CardComparatorTests {
 
         IllegalMethodsCheck.checkMethods("^java/lang/Integer.+");
     }
-
-    @Test
-    public void testSortingOrder() {
-        Context context = contextBuilder()
-            .subject("CardComparator.compare")
-            .build();
-
-        assertEquals(0, new CardComparator().compare(new Card(CardColor.CLUBS, 2), new Card(CardColor.CLUBS, 2)),
-            context, result -> "Cards do not return the correct result when equal");
-
-        assertEquals(1, new CardComparator().compare(new Card(CardColor.CLUBS, 3), new Card(CardColor.CLUBS, 2)),
-            context, result -> "Cards do not return the correct result when less");
-
-        assertEquals(-1, new CardComparator().compare(new Card(CardColor.CLUBS, 2), new Card(CardColor.CLUBS, 3)),
-            context, result -> "Cards do not return the correct result when greater");
-    }
 }

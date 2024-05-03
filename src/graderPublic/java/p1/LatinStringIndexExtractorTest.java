@@ -24,18 +24,20 @@ public class LatinStringIndexExtractorTest {
 
     @Test
     public void testExtractIndexValid() {
+        String testValue = "testen";
         Context context = contextBuilder()
             .subject("LatinStringIndexExtractor.extractIndex")
+            .add("values", testValue)
             .build();
 
 
-        assertEquals(4, new LatinStringIndexExtractor().extractIndex("testen", 1),
+        assertEquals(4, new LatinStringIndexExtractor().extractIndex(testValue, 1),
             context, result -> "Correct index from the middle of string is extracted");
 
-        assertEquals(19, new LatinStringIndexExtractor().extractIndex("testen", 5),
+        assertEquals(19, new LatinStringIndexExtractor().extractIndex(testValue, 5),
             context, result -> "Correct index from the beginning of string is extracted");
 
-        assertEquals(13, new LatinStringIndexExtractor().extractIndex("testen", 0),
+        assertEquals(13, new LatinStringIndexExtractor().extractIndex(testValue, 0),
             context, result -> "Correct index from the end of string is extracted");
     }
 

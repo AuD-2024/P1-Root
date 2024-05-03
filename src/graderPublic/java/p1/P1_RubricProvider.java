@@ -133,8 +133,8 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_2 = createParentCriterion("2 b)", "MergeSort", H2_2_1, H2_2_2, H2_2_3, H2_2_4, H2_2_5, H2_2_6);
 
-    public static final Criterion H2_3_1 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer ruft die [[[sort]]] Methode mit korrekten Werten in der richtigen Reihenfolge auf",
-        () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
+    public static final Criterion H2_3_1 = createCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer ruft die [[[sort]]] Methode mit korrekten Werten in der richtigen Reihenfolge auf", 1,
+        () -> HybridOptimizerTest.class.getMethod("testSortCall", List.class, List.class, List.class, int.class));
 
     public static final Criterion H2_3_2 = createUntestedCriterion("Die Methode [[[optimize]]] der Klasse HybridOptimizer funktioniert korrekt wenn die Messwerte nicht monoton sind und es nur ein Minimum gibt",
         () -> HybridOptimizerTest.class.getMethod("checkIllegalMethods"));
