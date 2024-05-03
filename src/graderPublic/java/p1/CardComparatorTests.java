@@ -23,6 +23,6 @@ public class CardComparatorTests {
         new CardComparator().compare(new Card(CardColor.CLUBS, 2), new Card(CardColor.HEARTS, 3));
         new CardComparator().compare(new Card(CardColor.CLUBS, 2), new Card(CardColor.CLUBS, 3));
 
-        IllegalMethodsCheck.checkMethods("^java/lang/Integer.+");
+        IllegalMethodsCheck.checkMethods("^java/lang/Integer.+", "^java/util/Comparator.+", "^java/lang/Enum.+");
     }
 }
