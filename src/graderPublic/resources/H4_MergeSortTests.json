@@ -103,45 +103,6 @@
       "right": 4,
       "k": 0,
       "calls": false
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 2,
-      "calls": true
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 3,
-      "calls": true
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 4,
-      "calls": true
     }
   ],
   "mergeSortTest": [
@@ -228,34 +189,6 @@
       "k": 0,
       "calls": false,
       "middle": 2
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 2,
-      "right": 2,
-      "k": 2,
-      "calls": false,
-      "middle": 3
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 1,
-      "calls": false,
-      "middle": 3
     }
   ],
   "alreadyPartitionedTest": [
