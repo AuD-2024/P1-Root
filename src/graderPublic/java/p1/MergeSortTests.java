@@ -174,7 +174,7 @@ public class MergeSortTests {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "alreadyPartitionedTest")
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "alreadyMergedTest")
     public void testAlreadyMerged(@Property("values") List<Integer> values,
                                   @Property("left") Integer left,
                                   @Property("right") Integer right) {
