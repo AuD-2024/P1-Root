@@ -36,7 +36,6 @@ dependencies {
     implementation(libs.algoutils.student)
     testImplementation(libs.junit.core)
     testImplementation(libs.junit.pioneer)
-    testImplementation(libs.mockito.inline)
 }
 
 application {
