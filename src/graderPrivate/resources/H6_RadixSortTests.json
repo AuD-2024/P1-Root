@@ -1,56 +1,130 @@
 {
+  "putBucketTest": [
+    {
+      "value": 25,
+      "index": 2
+    },
+    {
+      "value": 422,
+      "index": 1
+    },
+    {
+      "value": 61616123,
+      "index": 5
+    },
+    {
+      "value": 24,
+      "index": 111
+    },
+    {
+      "value": 6664321,
+      "index": 0
+    }
+  ],
+  "oneBucketTest": [
+    {
+      "expected": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "values": [
+        4000,
+        1000,
+        3000,
+        2000
+      ]
+    },
+    {
+      "expected": [
+        1000
+      ],
+      "values": [
+        1000
+      ]
+    },
+    {
+      "expected": [
+        2
+      ],
+      "values": [
+       2
+      ]
+    },
+    {
+      "expected": [
+        20,
+        22,
+        2424,
+        24
+      ],
+      "values": [
+        2424,
+        20,
+        22,
+        24
+      ]
+    }
+  ],
   "singleBucketTest": [
     {
       "values": [
-        "abbb",
-        "aab"
+        100,
+        10000
       ],
       "expected": [
-        "aab",
-        "abbb"
+        100,
+        10000
       ]
     },
     {
       "values": [
-        "ca",
-        "ba"
+        10000,
+        100
       ],
       "expected": [
-        "ba",
-        "ca"
+        10000,
+        100
       ]
     }
   ],
   "multipleItemsTest": [
     {
       "values": [
-        "Compilerbau",
-        "Algorithmen",
-        "Logik",
-        "Digitaltechnik"
+        1000,
+        5000,
+        42222,
+        69
       ],
       "expected": [
-        "Algorithmen",
-        "Compilerbau",
-        "Digitaltechnik",
-        "Logik"
+        69,
+        1000,
+        5000,
+        42222
       ]
     },
     {
-      "values": ["banana", "apple", "orange", "grape", "lemon", "mango"],
-      "expected": ["apple", "banana", "grape", "lemon", "mango", "orange"]
+      "values": [123, 9999, 45678, 1],
+      "expected": [1, 123, 9999, 45678]
     },
     {
-      "values": ["river", "mountain", "ocean", "forest", "desert", "lake"],
-      "expected": ["desert", "forest", "lake", "mountain", "ocean", "river"]
+      "values": [555, 4444, 33333, 22],
+      "expected": [22, 555, 4444, 33333]
     },
     {
-      "values": ["math", "biology", "chemistry", "physics", "history", "geography"],
-      "expected": ["biology", "chemistry", "geography", "history", "math", "physics"]
-    },
-    {
-      "values": ["table", "chair", "sofa", "bed", "cabinet", "desk"],
-      "expected": ["bed", "cabinet", "chair", "desk", "sofa", "table"]
+      "values": [
+        987,
+        8765,
+        12,
+        54321
+      ],
+      "expected": [
+        12,
+        987,
+        8765,
+        54321
+      ]
     }
   ]
 }

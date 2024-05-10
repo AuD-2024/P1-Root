@@ -16,8 +16,8 @@ public class LatinStringIndexExtractorTest {
             .build();
 
 
-        assertEquals(19, new LatinStringIndexExtractor().extractIndex("testen", 999),
-            context, result -> "Last index is selected if position is greater than string length");
+        assertThrows(IndexOutOfBoundsException.class, () -> new LatinStringIndexExtractor().extractIndex("testen", 999),
+            context, result -> "IndexOutOfBoundsException is thrown if position is greater than string length");
 
         assertThrows(IndexOutOfBoundsException.class, () -> new LatinStringIndexExtractor().extractIndex("test", -5),
             context, result -> "IndexOutOfBoundsException is thrown if position is negative");
