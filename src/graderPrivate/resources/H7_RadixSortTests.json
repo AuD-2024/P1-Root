@@ -2,23 +2,136 @@
   "putBucketTest": [
     {
       "value": 25,
-      "index": 2
+      "position": 2
     },
     {
       "value": 422,
-      "index": 1
+      "position": 1
     },
     {
       "value": 61616123,
-      "index": 5
+      "position": 5
     },
     {
       "value": 24,
-      "index": 111
+      "position": 111
     },
     {
       "value": 6664321,
-      "index": 0
+      "position": 0
+    }
+  ],
+  "putBucketCallMaxLength1Test": [
+    {
+      "values": [
+        5
+      ]
+    },
+    {
+      "values": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "values": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ],
+  "putBucketCallTest": [
+    {
+      "values": [
+        69
+      ],
+      "maxInputLength": 2
+    },
+    {
+      "values": [
+        123,
+        456,
+        789
+      ],
+      "maxInputLength": 3
+    },
+    {
+      "values": [
+        5432,
+        4321,
+        321,
+        21,
+        1
+      ],
+      "maxInputLength": 4
+    }
+  ],
+  "oneBucketOneEntryTest": [
+    {
+      "buckets": [
+        [
+          5
+        ]
+      ],
+      "expected": [
+        5
+      ],
+      "radix": 1
+    }
+  ],
+  "oneBucketMultipleEntriesTest": [
+    {
+      "buckets": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "radix": 1
+    },
+    {
+      "buckets": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "radix": 1
+    },
+    {
+      "buckets": [
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        3,
+        3
+      ],
+      "radix": 1
     }
   ],
   "oneBucketTest": [
