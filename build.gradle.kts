@@ -17,16 +17,12 @@ jagr {
         }
     }
     graders {
-        val graderPublic by creating {
-            graderName.set("P1-Public")
+        val graderPrivate by creating {
+            graderName.set("P1-Private")
             rubricProviderName.set("p1.P1_RubricProvider")
             configureDependencies {
                 implementation(libs.algoutils.tutor)
             }
-        }
-        val graderPrivate by creating {
-            parent(graderPublic)
-            graderName.set("P1-Private")
         }
     }
 }
