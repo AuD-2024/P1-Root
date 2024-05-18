@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junitpioneer.jupiter.json.JsonClasspathSource;
 import org.junitpioneer.jupiter.json.Property;
 import org.mockito.ArgumentCaptor;
-import org.mockito.exceptions.base.MockitoAssertionError;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.tudalgo.algoutils.tutor.general.assertions.Context;
 import p1.sort.ArraySortList;
@@ -25,14 +24,11 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertEquals;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertSame;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.contextBuilder;
-import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.fail;
+import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
 @SuppressWarnings("DuplicatedCode")
 @TestForSubmission
-public class MergeSortTests {
+public class MergeSortTest {
 
     private static final Comparator<Integer> COMPARATOR = Comparator.naturalOrder();
     private static HybridSort<Integer> hybridSort;
@@ -77,7 +73,7 @@ public class MergeSortTests {
 
         SortList<Integer> sortList = new ArraySortList<>(values);
 
-        hybridSort.mergeSort(sortList, left, right);
+        call(() -> hybridSort.mergeSort(sortList, left, right), context, result -> "mergeSort should not throw an exception");
 
         if (calls) {
             checkVerify(() -> verify(hybridSort, never()).merge(any(), anyInt(), anyInt(), anyInt()), context,
@@ -135,7 +131,7 @@ public class MergeSortTests {
 
         SortList<Integer> sortList = new ArraySortList<>(values);
 
-        hybridSort.mergeSort(sortList, left, right);
+        call(() -> hybridSort.mergeSort(sortList, left, right), context, result -> "mergeSort should not throw an exception");
 
         if (calls) {
             checkVerify(() -> verify(hybridSort, never()).bubbleSort(any(), anyInt(), anyInt()), context,
@@ -217,9 +213,18 @@ public class MergeSortTests {
     private void checkMerge(List<Integer> values, int left, int right, int middle, List<Integer> expected) {
 
         SortList<Integer> sortList = new ArraySortList<>(values);
-        hybridSort.merge(sortList, left, middle, right);
 
         Context context = contextBuilder()
+            .subject("HybridSort#merge()")
+            .add("values", values)
+            .add("left", left)
+            .add("right", right)
+            .add("expected", expected)
+            .build();
+
+        call(() -> hybridSort.merge(sortList, left, middle, right), context, result -> "merge should not throw an exception");
+
+        context = contextBuilder()
             .subject("HybridSort#merge()")
             .add("values", values)
             .add("left", left)
@@ -237,7 +242,7 @@ public class MergeSortTests {
     private void checkVerify(Runnable verifier, Context context, String msg) {
         try {
             verifier.run();
-        } catch (MockitoAssertionError e) {
+        } catch (AssertionError e) {
             fail(context, result -> msg + " Original error message:\n" + e.getMessage());
         } catch (Exception e) {
             fail(context, result -> "Unexpected Exception:\n" + e.getMessage());

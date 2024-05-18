@@ -81,26 +81,26 @@ public class P1_RubricProvider implements RubricProvider {
 
     public static final Criterion H2_1 = createParentCriterion("2 a)", "BubbleSort", H2_1_1, H2_1_2, H2_1_3, H2_1_4, H2_1_5, H2_1_6);
 
-    public static final Criterion H2_2_1 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort ruft, wenn notwendig, die Methode bubblesort mit den korrekten Werten auf", 1,
-        () -> MergeSortTests.class.getMethod("testBubbleSort", List.class, Integer.class, Integer.class, Integer.class, Boolean.class));
+    public static final Criterion H2_2_1 = createCriterion("Die Methode [[[mergeSort]]] der Klasse HybridSort ruft, wenn notwendig, die Methode bubblesort mit den korrekten Werten auf", 1,
+        () -> MergeSortTest.class.getMethod("testBubbleSort", List.class, Integer.class, Integer.class, Integer.class, Boolean.class));
 
     public static final Criterion H2_2_2 = createCriterion("Die Methode [[[mergeSort]]] der Klasse HybridSort ruft, wenn notwendig, die Methode [[[merge]]] und sich selber mit den korrekten Werten auf", 1,
-        () -> MergeSortTests.class.getMethod("testMergeSortRecursion", List.class, Integer.class, Integer.class, Integer.class, Boolean.class, Integer.class));
+        () -> MergeSortTest.class.getMethod("testMergeSortRecursion", List.class, Integer.class, Integer.class, Integer.class, Boolean.class, Integer.class));
 
     public static final Criterion H2_2_3 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe bereits gemerged ist", 1,
-        () -> MergeSortTests.class.getMethod("testAlreadyMerged", List.class, Integer.class, Integer.class));
+        () -> MergeSortTest.class.getMethod("testAlreadyMerged", List.class, Integer.class, Integer.class));
 
     public static final Criterion H2_2_4 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe nicht gemerged ist und zwei Elemente enthält", 1,
-        () -> MergeSortTests.class.getMethod("testMergeTwoItems", List.class, Integer.class, Integer.class, List.class));
+        () -> MergeSortTest.class.getMethod("testMergeTwoItems", List.class, Integer.class, Integer.class, List.class));
 
     public static final Criterion H2_2_5 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert korrekt wenn die Eingabe nicht gemerged ist und drei Elemente enthält", 1,
-        () -> MergeSortTests.class.getMethod("testMergeThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
+        () -> MergeSortTest.class.getMethod("testMergeThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
 
     public static final Criterion H2_2_6 = createCriterion("Die Methode [[[merge]]] der Klasse HybridSort funktioniert vollständig korrekt", 1,
-        () -> MergeSortTests.class.getMethod("testAlreadyMerged", List.class, Integer.class, Integer.class),
-        () -> MergeSortTests.class.getMethod("testMergeTwoItems", List.class, Integer.class, Integer.class, List.class),
-        () -> MergeSortTests.class.getMethod("testMergeThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class),
-        () -> MergeSortTests.class.getMethod("testMergeMultipleItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
+        () -> MergeSortTest.class.getMethod("testAlreadyMerged", List.class, Integer.class, Integer.class),
+        () -> MergeSortTest.class.getMethod("testMergeTwoItems", List.class, Integer.class, Integer.class, List.class),
+        () -> MergeSortTest.class.getMethod("testMergeThreeItems", List.class, Integer.class, Integer.class, Integer.class, List.class),
+        () -> MergeSortTest.class.getMethod("testMergeMultipleItems", List.class, Integer.class, Integer.class, Integer.class, List.class));
 
     public static final Criterion H2_2 = createParentCriterion("2 b)", "MergeSort", H2_2_1, H2_2_2, H2_2_3, H2_2_4, H2_2_5, H2_2_6);
 
