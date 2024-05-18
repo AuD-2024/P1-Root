@@ -53,7 +53,7 @@ public class Main {
         SortList<String> list = new ArraySortList<>(strings);
 
         int maxInputLength = strings.stream().mapToInt(String::length).max().orElse(0);
-        RadixSort<String> radixSort = new RadixSort<>(27, new LatinStringIndexExtractor());
+        RadixSort<String> radixSort = new RadixSort<>(26, new LatinStringIndexExtractor());
         radixSort.setMaxInputLength(maxInputLength);
 
         radixSort.sort(list);
