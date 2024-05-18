@@ -39,13 +39,13 @@ public class BubbleSortTests {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H3_bubbleSortTests.json", data = "alreadySortedTest")
+    @JsonClasspathSource(value = "H3_BubbleSortTests.json", data = "alreadySortedTest")
     public void testAlreadySorted(@Property("values") List<Integer> values) {
         testSorting(values, 0, values.size() - 1, values);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H3_bubbleSortTests.json", data = "oneItemTest")
+    @JsonClasspathSource(value = "H3_BubbleSortTests.json", data = "oneItemTest")
     public void testOneItem(@Property("value") Integer value) {
         Context context = contextBuilder()
             .subject("HybridSort#bubbleSort()")
@@ -70,13 +70,13 @@ public class BubbleSortTests {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H3_bubbleSortTests.json", data = "multipleItemsTest")
+    @JsonClasspathSource(value = "H3_BubbleSortTests.json", data = "multipleItemsTest")
     public void testMultipleItems(@Property("values") List<Integer> values) {
         testSorting(values, 0, values.size() - 1, values.stream().sorted(COMPARATOR).toList());
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H3_bubbleSortTests.json", data = "boundsTest")
+    @JsonClasspathSource(value = "H3_BubbleSortTests.json", data = "boundsTest")
     public void testBounds(@Property("values") List<Integer> values,
                            @Property("left") Integer left,
                            @Property("right") Integer right,
@@ -86,7 +86,7 @@ public class BubbleSortTests {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H3_bubbleSortTests.json", data = "operationOrderTest")
+    @JsonClasspathSource(value = "H3_BubbleSortTests.json", data = "operationOrderTest")
     public void testOperationOrder(@Property("values") List<Integer> values,
                                    @Property("left") Integer left,
                                    @Property("right") Integer right,

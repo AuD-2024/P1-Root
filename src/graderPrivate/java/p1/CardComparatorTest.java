@@ -21,7 +21,7 @@ import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.assertT
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.contextBuilder;
 
 @TestForSubmission
-public class CardComparatorTests {
+public class CardComparatorTest {
 
     private static final Comparator<Card> CARD_COMPARATOR = new CardComparator();
 

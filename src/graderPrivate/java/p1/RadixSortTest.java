@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.*;
 
 @TestForSubmission
-public class RadixSortTests {
+public class RadixSortTest {
     @BeforeEach
     public void setup() {
         MethodInterceptor.reset();
@@ -32,7 +32,7 @@ public class RadixSortTests {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H6_RadixSortTests.json", data = "putBucketTest")
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "putBucketTest")
     public void testPutBucket(@Property("value") Integer value, @Property("index") Integer index) {
         IntegerIndexExtractor extractor = spy(new IntegerIndexExtractor(10));
         RadixSort<Integer> radixSort = spy(new RadixSort<>(10, extractor));
@@ -49,19 +49,19 @@ public class RadixSortTests {
     }
 
     @ParameterizedTest()
-    @JsonClasspathSource(value = "H6_RadixSortTests.json", data = "singleBucketTest")
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "singleBucketTest")
     public void oneBucketEntryMaxLength1(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected) {
         testSorting(values, expected, 1, 1);
     }
 
     @ParameterizedTest()
-    @JsonClasspathSource(value = "H6_RadixSortTests.json", data = "multipleItemsTest")
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "multipleItemsTest")
     public void testMultipleInputLength(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected) {
         testSorting(values, expected, 5, 10);
     }
 
     @ParameterizedTest()
-    @JsonClasspathSource(value = "H6_RadixSortTests.json", data = "oneBucketTest")
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "oneBucketTest")
     public void testOneBucketMultipleEntries(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected) {
         testSorting(values, expected, 1, 10);
     }

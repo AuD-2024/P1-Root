@@ -29,7 +29,7 @@ import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.context
 import static org.tudalgo.algoutils.tutor.general.assertions.Assertions2.fail;
 
 @TestForSubmission
-public class HybridOptimizerTests {
+public class HybridOptimizerTest {
 
     private static final Comparator<Integer> COMPARATOR = Comparator.naturalOrder();
     private static HybridSort<Integer> hybridSort;
@@ -85,7 +85,6 @@ public class HybridOptimizerTests {
             if (calls.get() > values.size() + 2) {
                 fail(context, TR -> "The sort() method was called more often than necessary in the worst case (array.length + 2).");
             }
-
 
             return null;
         };
