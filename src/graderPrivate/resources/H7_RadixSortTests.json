@@ -134,75 +134,55 @@
       "radix": 1
     }
   ],
-  "oneBucketTest": [
+  "multipleBucketsOneEntryTest": [
     {
-      "expected": [
-        4000,
-        1000,
-        3000,
-        2000
+      "buckets": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
       ],
-      "values": [
-        4000,
-        1000,
-        3000,
-        2000
-      ]
+      "expected": [
+        1,
+        2,
+        3
+      ],
+      "radix": 3
     },
     {
-      "expected": [
-        1000
+      "buckets": [
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ]
       ],
-      "values": [
-        1000
-      ]
-    },
-    {
       "expected": [
-        2
+        5,
+        4,
+        3,
+        2,
+        1
       ],
-      "values": [
-       2
-      ]
-    },
-    {
-      "expected": [
-        20,
-        22,
-        2424,
-        24
-      ],
-      "values": [
-        2424,
-        20,
-        22,
-        24
-      ]
+      "radix": 5
     }
   ],
-  "singleBucketTest": [
-    {
-      "values": [
-        100,
-        10000
-      ],
-      "expected": [
-        100,
-        10000
-      ]
-    },
-    {
-      "values": [
-        10000,
-        100
-      ],
-      "expected": [
-        10000,
-        100
-      ]
-    }
-  ],
-  "multipleItemsTest": [
+  "sortingTest": [
     {
       "values": [
         1000,
@@ -215,15 +195,41 @@
         1000,
         5000,
         42222
-      ]
+      ],
+      "radix": 10,
+      "maxInputLength": 5
     },
     {
-      "values": [123, 9999, 45678, 1],
-      "expected": [1, 123, 9999, 45678]
+      "values": [
+        123,
+        9999,
+        45678,
+        1
+      ],
+      "expected": [
+        1,
+        123,
+        9999,
+        45678
+      ],
+      "radix": 10,
+      "maxInputLength": 5
     },
     {
-      "values": [555, 4444, 33333, 22],
-      "expected": [22, 555, 4444, 33333]
+      "values": [
+        555,
+        4444,
+        33333,
+        22
+      ],
+      "expected": [
+        22,
+        555,
+        4444,
+        33333
+      ],
+      "radix": 10,
+      "maxInputLength": 5
     },
     {
       "values": [
@@ -237,7 +243,9 @@
         987,
         8765,
         54321
-      ]
+      ],
+      "radix": 10,
+      "maxInputLength": 10
     }
   ]
 }

@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junitpioneer.jupiter.json.JsonClasspathSource;
 import org.junitpioneer.jupiter.json.Property;
 import org.mockito.ArgumentCaptor;
-import org.mockito.exceptions.base.MockitoAssertionError;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 import org.tudalgo.algoutils.tutor.general.assertions.Context;
 import p1.sort.ArraySortList;
@@ -140,15 +139,9 @@ public class RadixSortTest {
     }
 
     @ParameterizedTest()
-    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "multipleItemsTest")
-    public void testMultipleInputLength(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected) {
-        testSorting(values, expected, 5, 10);
-    }
-
-    @ParameterizedTest()
-    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "oneBucketTest")
-    public void testOneBucketMultipleEntries(@Property("values") List<Integer> values, @Property("expected") List<Integer> expected) {
-        testSorting(values, expected, 1, 10);
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "multipleBucketsOneEntryTest")
+    public void testMultipleBucketsOneEntry(@Property("buckets") List<List<Integer>> buckets, @Property("expected") List<Integer> expected, @Property("radix") int radix) throws ReflectiveOperationException {
+        testBucketExtraction(buckets, expected, radix);
     }
 
     private void testBucketExtraction(List<List<Integer>> buckets, List<Integer> expected, Integer radix) throws ReflectiveOperationException {
@@ -194,7 +187,13 @@ public class RadixSortTest {
         }
     }
 
-    private void testSorting(List<Integer> values, List<Integer> expected, Integer maxInputLength, Integer radix) {
+    @ParameterizedTest()
+    @JsonClasspathSource(value = "H7_RadixSortTests.json", data = "sortingTest")
+    public void testSorting(@Property("values") List<Integer> values,
+                            @Property("expected") List<Integer> expected,
+                            @Property("radix") Integer radix,
+                            @Property("maxInputLength") Integer maxInputLength) {
+
         RadixSort<Integer> radixSort = new RadixSort<>(radix, new IntegerIndexExtractor(radix));
         radixSort.setMaxInputLength(maxInputLength);
 

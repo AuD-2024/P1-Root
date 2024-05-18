@@ -134,22 +134,30 @@ public class P1_RubricProvider implements RubricProvider {
     public static final Criterion H3_2_1 = createCriterion("Die Methode [[[putBucket]]] der Klasse RadixSort funktioniert vollständig korrekt", 1,
         () -> RadixSortTest.class.getMethod("testPutBucket", Integer.class, Integer.class));
 
+    public static final Criterion H3_2_2 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength 1 ist", 1,
+        () -> RadixSortTest.class.getMethod("testPutBucketCallMaxLength1", List.class));
+
     public static final Criterion H3_2_3 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort ruft die Methode putBucket in der korrekten Reihenfolge mit den korrekten Werten auf wenn maxInputLength größer als 1 ist", 1,
-        () -> RadixSortTest.class.getMethod("testMultipleInputLength", List.class, List.class));
+        () -> RadixSortTest.class.getMethod("testPutBucketCall", List.class, Integer.class));
 
     public static final Criterion H3_2_4 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit einem Eintrag gibt und maxInputLength 1 ist", 1,
-        () -> RadixSortTest.class.getMethod("oneBucketEntryMaxLength1", List.class, List.class));
+        () -> RadixSortTest.class.getMethod("testOneBucketOneEntry", List.class, List.class, int.class));
 
     public static final Criterion H3_2_5 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es nur einen Bucket mit mehreren Einträgen gibt und maxInputLength 1 ist", 1,
-        () -> RadixSortTest.class.getMethod("testOneBucketMultipleEntries", List.class, List.class));
+        () -> RadixSortTest.class.getMethod("testOneBucketMultipleEntries", List.class, List.class, int.class));
+
+    public static final Criterion H3_2_6 = createCriterion("Die Methode sort der Klasse RadixSort schreibt die Werte aus den buckets an die korrekten Stellen in die zu sortierende Liste wenn es mehrere Buckets mit jeweils nur einem Eintrag gibt und maxInputLength 1 ist.", 1,
+        () -> RadixSortTest.class.getMethod("testMultipleBucketsOneEntry", List.class, List.class, int.class));
 
     public static final Criterion H3_2_7 = createCriterion("Die Methode [[[sort]]] der Klasse RadixSort funktioniert vollständig korrekt", 1,
-        () -> RadixSortTest.class.getMethod("testMultipleInputLength", List.class, List.class),
-        () -> RadixSortTest.class.getMethod("testOneBucketMultipleEntries", List.class, List.class),
-        () -> RadixSortTest.class.getMethod("oneBucketEntryMaxLength1", List.class, List.class),
-        () -> RadixSortTest.class.getMethod("testOneBucketMultipleEntries", List.class, List.class));
+        () -> RadixSortTest.class.getMethod("testPutBucketCallMaxLength1", List.class),
+        () -> RadixSortTest.class.getMethod("testPutBucketCall", List.class, Integer.class),
+        () -> RadixSortTest.class.getMethod("testOneBucketOneEntry", List.class, List.class, int.class),
+        () -> RadixSortTest.class.getMethod("testOneBucketMultipleEntries", List.class, List.class, int.class),
+        () -> RadixSortTest.class.getMethod("testMultipleBucketsOneEntry", List.class, List.class, int.class),
+        () -> RadixSortTest.class.getMethod("testSorting", List.class, List.class, Integer.class, Integer.class));
 
-    public static final Criterion H3_2 = createParentCriterion("3 b)", "RadixSort", H3_2_1, H3_2_3, H3_2_4, H3_2_5, H3_2_7);
+    public static final Criterion H3_2 = createParentCriterion("3 b)", "RadixSort", H3_2_1, H3_2_2, H3_2_3, H3_2_4, H3_2_5, H3_2_6, H3_2_7);
 
     public static final Criterion H3 = createParentCriterion("3", "Radix-Sort", H3_1, H3_2);
 
