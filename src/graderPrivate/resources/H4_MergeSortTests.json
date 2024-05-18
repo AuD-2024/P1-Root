@@ -104,45 +104,6 @@
       "right": 4,
       "k": 0,
       "calls": false
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 2,
-      "calls": true
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 3,
-      "calls": true
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 4,
-      "calls": true
     }
   ],
   "mergeSortTest": [
@@ -158,7 +119,7 @@
       "right": 4,
       "k": 3,
       "calls": true,
-      "partitioner": 2
+      "middle": 2
     },
     {
       "values": [
@@ -173,7 +134,7 @@
       "right": 4,
       "k": 3,
       "calls": true,
-      "partitioner": 3
+      "middle": 3
     },
     {
       "values": [
@@ -187,7 +148,7 @@
       "right": 3,
       "k": 4,
       "calls": false,
-      "partitioner": 3
+      "middle": 3
     },
     {
       "values": [
@@ -201,7 +162,7 @@
       "right": 3,
       "k": 1,
       "calls": true,
-      "partitioner": 2
+      "middle": 2
     },
     {
       "values": [
@@ -215,7 +176,7 @@
       "right": 3,
       "k": 1,
       "calls": true,
-      "partitioner": 2
+      "middle": 2
     },
     {
       "values": [
@@ -229,38 +190,10 @@
       "right": 2,
       "k": 0,
       "calls": false,
-      "partitioner": 2
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 2,
-      "right": 2,
-      "k": 2,
-      "calls": false,
-      "partitioner": 3
-    },
-    {
-      "values": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "left": 3,
-      "right": 1,
-      "k": 1,
-      "calls": false,
-      "partitioner": 3
+      "middle": 2
     }
   ],
-  "alreadyPartitionedTest": [
+  "alreadyMergedTest": [
     {
       "values": [
         1,
@@ -380,7 +313,7 @@
       "right": 2
     }
   ],
-  "partitionTwoItemsTest": [
+  "mergeTwoItemsTest": [
     {
       "values": [2,1],
       "left": 0,
@@ -412,7 +345,7 @@
       "expected": [0,1,2,3]
     }
   ],
-  "partitionThreeItemsTest": [
+  "mergeThreeItemsTest": [
     {
       "values": [3,2,4],
       "left": 0,
@@ -575,7 +508,7 @@
       "expected": [4,1,3,3,0]
     }
   ],
-  "partitionMultipleItemsTest": [
+  "mergeMultipleItemsTest": [
     {
       "values": [6,5,4,3,2],
       "left": 0,

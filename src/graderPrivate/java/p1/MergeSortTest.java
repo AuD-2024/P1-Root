@@ -47,10 +47,10 @@ public class MergeSortTest {
     @ParameterizedTest
     @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "bubbleSortTest")
     public void testBubbleSort(@Property("values") List<Integer> values,
-                                  @Property("left") Integer left,
-                                  @Property("right") Integer right,
-                                  @Property("k") Integer k,
-                                  @Property("calls") Boolean calls) {
+                               @Property("left") Integer left,
+                               @Property("right") Integer right,
+                               @Property("k") Integer k,
+                               @Property("calls") Boolean calls) {
 
         Context context = contextBuilder()
             .subject("HybridSort#mergeSort()")
@@ -101,7 +101,7 @@ public class MergeSortTest {
                                        @Property("right") Integer right,
                                        @Property("k") Integer k,
                                        @Property("calls") Boolean calls,
-                                       @Property("partitioner") Integer partitioner) {
+                                       @Property("middle") Integer middle) {
 
         Context context = contextBuilder()
             .subject("HybridSort#mergeSort()")
@@ -109,7 +109,7 @@ public class MergeSortTest {
             .add("left", left)
             .add("right", right)
             .add("k", k)
-            .add("partitioner", partitioner)
+            .add("middle", middle)
             .build();
 
         hybridSort.setK(k);
@@ -152,16 +152,16 @@ public class MergeSortTest {
 
             if (leftFirst) {
                 assertEquals(left, mergeSortLeftCaptor.getAllValues().get(1), context, result -> "mergeSort() was called with the wrong left index at the first call.");
-                assertEquals(partitioner, mergeSortRightCaptor.getAllValues().get(1), context, result -> "mergeSort() was called with the wrong right index at the first call.");
+                assertEquals(middle, mergeSortRightCaptor.getAllValues().get(1), context, result -> "mergeSort() was called with the wrong right index at the first call.");
 
-                assertEquals(partitioner + 1, mergeSortLeftCaptor.getAllValues().get(2), context, result -> "mergeSort() was called with the wrong left index at the second call.");
+                assertEquals(middle + 1, mergeSortLeftCaptor.getAllValues().get(2), context, result -> "mergeSort() was called with the wrong left index at the second call.");
                 assertEquals(right, mergeSortRightCaptor.getAllValues().get(2), context, result -> "mergeSort() was called with the wrong right index at the second call.");
             } else {
-                assertEquals(partitioner + 1, mergeSortLeftCaptor.getAllValues().get(1), context, result -> "mergeSort() was called with the wrong left index at the first call.");
+                assertEquals(middle + 1, mergeSortLeftCaptor.getAllValues().get(1), context, result -> "mergeSort() was called with the wrong left index at the first call.");
                 assertEquals(right, mergeSortRightCaptor.getAllValues().get(1), context, result -> "mergeSort() was called with the wrong right index at the first call.");
 
                 assertEquals(left, mergeSortLeftCaptor.getAllValues().get(2), context, result -> "mergeSort() was called with the wrong left index at the second call.");
-                assertEquals(partitioner, mergeSortRightCaptor.getAllValues().get(2), context, result -> "mergeSort() was called with the wrong right index at the second call.");
+                assertEquals(middle, mergeSortRightCaptor.getAllValues().get(2), context, result -> "mergeSort() was called with the wrong right index at the second call.");
             }
         } else {
             checkVerify(() -> verify(hybridSort, never()).merge(any(), anyInt(), anyInt(), anyInt()), context, "merge() was called when it should not have been.");
@@ -170,42 +170,42 @@ public class MergeSortTest {
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "alreadyPartitionedTest")
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "alreadyMergedTest")
     public void testAlreadyMerged(@Property("values") List<Integer> values,
-                                       @Property("left") Integer left,
-                                       @Property("right") Integer right) {
+                                  @Property("left") Integer left,
+                                  @Property("right") Integer right) {
 
         checkMerge(values, left, right, left, values);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "partitionTwoItemsTest")
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergeTwoItemsTest")
     public void testMergeTwoItems(@Property("values") List<Integer> values,
-                                      @Property("left") Integer left,
-                                      @Property("right") Integer right,
-                                      @Property("expected") List<Integer> expected) {
+                                  @Property("left") Integer left,
+                                  @Property("right") Integer right,
+                                  @Property("expected") List<Integer> expected) {
 
         checkMerge(values, left, right, left, expected);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "partitionThreeItemsTest")
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergeThreeItemsTest")
     public void testMergeThreeItems(@Property("values") List<Integer> values,
-                                        @Property("left") Integer left,
-                                        @Property("right") Integer right,
-                                        @Property("middle") Integer middle,
-                                        @Property("expected") List<Integer> expected) {
+                                    @Property("left") Integer left,
+                                    @Property("right") Integer right,
+                                    @Property("middle") Integer middle,
+                                    @Property("expected") List<Integer> expected) {
 
         checkMerge(values, left, right, middle, expected);
     }
 
     @ParameterizedTest
-    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "partitionMultipleItemsTest")
+    @JsonClasspathSource(value = "H4_MergeSortTests.json", data = "mergeMultipleItemsTest")
     public void testMergeMultipleItems(@Property("values") List<Integer> values,
-                                           @Property("left") Integer left,
-                                           @Property("right") Integer right,
-                                           @Property("middle") Integer middle,
-                                           @Property("expected") List<Integer> expected) {
+                                       @Property("left") Integer left,
+                                       @Property("right") Integer right,
+                                       @Property("middle") Integer middle,
+                                       @Property("expected") List<Integer> expected) {
 
         checkMerge(values, left, right, middle, expected);
     }
