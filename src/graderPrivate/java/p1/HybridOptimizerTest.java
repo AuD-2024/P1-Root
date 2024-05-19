@@ -78,8 +78,6 @@ public class HybridOptimizerTest {
                 assertEquals(values.get(i), sortList.get(i), context,
                     result -> ("The sortList contains the wrong value at index %d. " +
                         "Note that the sortList might have been modified by an previous call to sort()").formatted(finalI));
-
-                sortList.set(i, -1); // fake sorting to check if a new sortList is created each time sort() is called
             }
 
             if (calls.get() > values.size() + 2) {
@@ -174,6 +172,15 @@ public class HybridOptimizerTest {
 
             setReadCount(sortList, calls.get() == 0 ? 0 : reads.get(calls.get() - 1));
             setWriteCount(sortList, calls.get() == 0 ? 0 : writes.get(calls.get() - 1));
+
+            for (int i = 0; i < sortList.getSize(); i++) {
+                int finalI = i;
+                assertEquals(values.get(i), sortList.get(i), context,
+                    result -> ("The sortList contains the wrong value at index %d. " +
+                        "Note that the sortList might have been modified by an previous call to sort()").formatted(finalI));
+
+                sortList.set(i, -1); // fake sorting to check if a new sortList is created each time sort() is called
+            }
 
             return null;
         };
